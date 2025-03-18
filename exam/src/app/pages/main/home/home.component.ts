@@ -12,9 +12,9 @@ import { UtilService } from 'src/app/services/util/util.service';
 export class HomeComponent implements OnInit {
   items: any
 
-  @ViewChild('search', { read: ElementRef }) firstName: ElementRef<HTMLElement> | undefined;
-  firstNameAutofilled: boolean | undefined;
- 
+  @ViewChild('search', { read: ElementRef }) search: ElementRef<HTMLElement> | undefined;
+  searchAutoFill: boolean | undefined;
+  
   searchForm!: FormGroup;
   constructor(private _autofill: AutofillMonitor, public pokedexSrvc: PokedexService, private utilSrvc: UtilService, private fb: FormBuilder) { }
 
@@ -43,13 +43,13 @@ export class HomeComponent implements OnInit {
 
   ngAfterViewInit() {
     this._autofill
-      .monitor(this.firstName!)
-      .subscribe(e => (this.firstNameAutofilled = e.isAutofilled));
+      .monitor(this.search!)
+      .subscribe(e => (this.searchAutoFill = e.isAutofilled));
 
   }
 
   ngOnDestroy() {
-    this._autofill.stopMonitoring(this.firstName!);
+    this._autofill.stopMonitoring(this.search!);
   }
 
   init(): Promise<any> {

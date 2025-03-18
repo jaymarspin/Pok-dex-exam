@@ -2,7 +2,7 @@
   <mat-form-field appearance="fill"  style="width: 100%;">
     <mat-label>Search</mat-label>
     <input matInput #search formControlName="search" />
-    <mat-hint *ngIf="firstNameAutofilled">Autofilled!</mat-hint>
+    <mat-hint *ngIf="searchAutoFill">Autofilled!</mat-hint>
     <button
       [disabled]="!searchForm.valid"
       mat-raised-button
@@ -17,6 +17,6 @@
   </mat-form-field>
 </form>
 
-<ng-container *ngIf="items">
+<ng-container *ngIf="items"> 
   <app-pokemon-lists [items]="items"></app-pokemon-lists>
 </ng-container>

@@ -8,17 +8,17 @@ import { NavComponent } from './shared/nav/nav.component';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { MainComponent } from './pages/main/main.component';
 import { HomeComponent } from './pages/main/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PokedexService } from './services/pokedex/pokedex.service';
 import { UtilService } from './services/util/util.service';
-import { ScrollingModule  } from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { PokemonListsComponent } from './pages/main/home/pokemon-lists/pokemon-lists.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PokemonItemComponent } from './pages/main/home/pokemon-lists/pokemon-item/pokemon-item.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { JsonPrettyPipe } from './pipes/json-pretty/json-pretty.pipe';
-import { JsonWrapperComponent } from './shared/json-wrapper/json-wrapper.component'; 
-
+import { JsonWrapperComponent } from './shared/json-wrapper/json-wrapper.component';
+import { LoggingInterceptor } from './interceptors/logging/logging.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,7 @@ import { JsonWrapperComponent } from './shared/json-wrapper/json-wrapper.compone
     PokemonListsComponent,
     PokemonItemComponent,
     JsonPrettyPipe,
-    JsonWrapperComponent, 
+    JsonWrapperComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,11 +38,13 @@ import { JsonWrapperComponent } from './shared/json-wrapper/json-wrapper.compone
     HttpClientModule,
     ScrollingModule,
     OverlayModule,
-    
+
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PokedexService, UtilService],
+  providers: [PokedexService, UtilService, {
+    provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

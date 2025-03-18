@@ -1,8 +1,7 @@
 <ng-container *ngIf="pokemon">
   <div class="pokemon-wrapper">
-    <mat-progress-spinner
-      *ngIf="!pokemonDetails; else pokemonAvatar"
-    ></mat-progress-spinner>
+   
+    <mat-spinner  color="primary" *ngIf="!pokemonDetails; else pokemonAvatar"></mat-spinner>
     <ng-template #pokemonAvatar>
       <img
         *ngIf="pokemonDetails"
