@@ -20,13 +20,12 @@
       mat-raised-button
       color="primary"
       class="pokemon-details"
-     
       (click)="isOpen = !isOpen"
       type="button"
       cdkOverlayOrigin
       #trigger="cdkOverlayOrigin"
     >
-      {{isOpen ? 'Close Details' : 'Open Details'}}
+      {{ isOpen ? "Close Details" : "Open Details" }}
     </button>
     <ng-template
       cdkConnectedOverlay
@@ -35,10 +34,10 @@
       (detach)="isOpen = false"
     >
       <div class="pokemon-details-json-parse">
-
         <!-- Component template -->
- 
-        {{pokemonDetails | jsonPretty}}
+        <app-json-wrapper>
+          {{ pokemonDetails | jsonPretty }}
+        </app-json-wrapper>
       </div>
     </ng-template>
   </div>

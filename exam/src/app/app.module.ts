@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PokemonItemComponent } from './pages/main/home/pokemon-lists/pokemon-item/pokemon-item.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { JsonPrettyPipe } from './pipes/json-pretty/json-pretty.pipe';
+import { JsonWrapperComponent } from './shared/json-wrapper/json-wrapper.component'; 
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { JsonPrettyPipe } from './pipes/json-pretty/json-pretty.pipe';
     PokemonListsComponent,
     PokemonItemComponent,
     JsonPrettyPipe,
+    JsonWrapperComponent, 
   ],
   imports: [
     BrowserModule,
