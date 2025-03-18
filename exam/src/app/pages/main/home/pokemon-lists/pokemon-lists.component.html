@@ -1,3 +1,6 @@
-<cdk-virtual-scroll-viewport appendOnly itemSize="20" class="example-viewport">
-  <div *cdkVirtualFor="let item of items" class="example-item">{{ item }}</div>
+<cdk-virtual-scroll-viewport appendOnly itemSize="10" class="wrapper">
+  <app-pokemon-item
+    *cdkVirtualFor="let item of items"
+    [pokemon]="item"
+  ></app-pokemon-item>
 </cdk-virtual-scroll-viewport>

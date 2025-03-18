@@ -1,0 +1,45 @@
+<ng-container *ngIf="pokemon">
+  <div class="pokemon-wrapper">
+    <mat-progress-spinner
+      *ngIf="!pokemonDetails; else pokemonAvatar"
+    ></mat-progress-spinner>
+    <ng-template #pokemonAvatar>
+      <img
+        *ngIf="pokemonDetails"
+        [src]="pokemonDetails.sprites.front_default"
+        class="pokemon-avatar"
+      />
+    </ng-template>
+
+    <div class="pokemon-name-wrapper">
+      <span class="pokemon-name">{{ pokemon.name }}</span>
+    </div>
+
+    <button
+      [ngStyle]="{ right: '100px', display: pokemonDetails ? 'block' : 'none' }"
+      mat-raised-button
+      color="primary"
+      class="pokemon-details"
+     
+      (click)="isOpen = !isOpen"
+      type="button"
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+    >
+      {{isOpen ? 'Close Details' : 'Open Details'}}
+    </button>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="isOpen"
+      (detach)="isOpen = false"
+    >
+      <div class="pokemon-details-json-parse">
+
+        <!-- Component template -->
+ 
+        {{pokemonDetails | jsonPretty}}
+      </div>
+    </ng-template>
+  </div>
+</ng-container>

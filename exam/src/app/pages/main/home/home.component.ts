@@ -1,6 +1,6 @@
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PokedexService } from 'src/app/services/pokedex/pokedex.service';
 import { UtilService } from 'src/app/services/util/util.service';
 @Component({
@@ -14,13 +14,16 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('search', { read: ElementRef }) firstName: ElementRef<HTMLElement> | undefined;
   firstNameAutofilled: boolean | undefined;
-
-
-
-  constructor(private _autofill: AutofillMonitor, public pokedexSrvc: PokedexService, private utilSrvc: UtilService, private formBuilder: FormBuilder) { }
+ 
+  searchForm!: FormGroup;
+  constructor(private _autofill: AutofillMonitor, public pokedexSrvc: PokedexService, private utilSrvc: UtilService, private fb: FormBuilder) { }
 
   async ngOnInit(): Promise<void> {
 
+    this.searchForm = this.fb.group({
+      search: ['', Validators.required],
+ 
+    });
     try {
       const x = await this.init()
 
@@ -28,9 +31,9 @@ export class HomeComponent implements OnInit {
 
       this.pokedexSrvc.pokemons = x.results
 
-      this.items = Array.from({ length: this.pokedexSrvc.pokemons.length }).map((_, i) => `Item #${i}`);
+      this.items = Array.from({ length: this.pokedexSrvc.pokemons.length }).map((_, i) => this.pokedexSrvc.pokemons[i]);
 
-      console.log(this.items)
+
     } catch (e: any) {
       this.utilSrvc.navLoaded.next(true)
     }

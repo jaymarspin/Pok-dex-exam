@@ -1,7 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/cdk/overlay-prebuilt.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: #000;
+}
 
-html, body { height: 100%; }
-body { margin: 0;
-    background-color: #000;
+.wrapper {
+  height: 80vh;
 
+  width: 50%;
+
+  background-color: rgb(31, 29, 29);
+  display: block;
+  margin: auto;
+
+  border-radius: 10px;
+}
+
+.search-form {
+  width: 50%;
+
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+
+  color: #fff;
+  
+.search-btn {
+    position: absolute;
+    right: 0px;
+    top: -15px;
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    height: 80vh;
+
+    width: 80%;
+
+    background-color: rgb(31, 29, 29);
+    display: block;
+    margin: auto;
+
+    border-radius: 10px;
+  }
+
+
+  .search-form {
+    width: 80%;
+  
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+  
+    color: #fff;
+    
+  .search-btn {
+      position: absolute;
+      right: 0px;
+      top: -15px;
+    }
+    
+  }
+  .pokemon-avatar{
+    display: block;
+    float: left;
+    height: 100px;
+    clear: left; 
+     
+  }
+
+  .pokemon-details{
+    position: relative;
+    float: left !important; 
+    top: 10px;
+    left: 5px;
+
+  }
 }

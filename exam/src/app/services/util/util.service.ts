@@ -6,7 +6,5 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UtilService {
   navLoaded = new BehaviorSubject(null as any);
-
-
   constructor() { }
 }

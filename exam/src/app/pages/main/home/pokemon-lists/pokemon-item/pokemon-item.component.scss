@@ -1,0 +1,44 @@
+.pokemon-wrapper {
+    height: auto;
+ 
+    overflow: hidden;
+    padding: 20px;
+    width: 100%;
+    display: block;
+    border: 1px solid #575757;
+  }
+  .pokemon-avatar{
+    display: block;
+    float: left;
+    height: 100px;
+    clear: left;
+     
+  }
+
+  .pokemon-name-wrapper{ 
+    height: 100%;
+    display: block;
+    width: 100%;
+
+    .pokemon-name{
+        float: left;
+        display: block;
+        position: relative;
+        font-size: 25px;
+        height: auto;
+        color: #fff;
+      }
+
+     
+  }
+
+  .pokemon-details{
+    position: relative;
+    float: right;
+  }
+.pokemon-details-json-parse{
+    background-color: #fff;
+    height: 40vh;
+    overflow: scroll;
+    max-width: 90%;
+}

@@ -11,9 +11,12 @@ import { HomeComponent } from './pages/main/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokedexService } from './services/pokedex/pokedex.service';
 import { UtilService } from './services/util/util.service';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ScrollingModule  } from '@angular/cdk/scrolling';
 import { PokemonListsComponent } from './pages/main/home/pokemon-lists/pokemon-lists.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PokemonItemComponent } from './pages/main/home/pokemon-lists/pokemon-item/pokemon-item.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { JsonPrettyPipe } from './pipes/json-pretty/json-pretty.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     HomeComponent,
     PokemonListsComponent,
+    PokemonItemComponent,
+    JsonPrettyPipe,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularMaterialModule,
     HttpClientModule,
     ScrollingModule,
+    OverlayModule,
+    
     FormsModule,
     ReactiveFormsModule
   ],
