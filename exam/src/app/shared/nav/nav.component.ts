@@ -11,8 +11,10 @@ export class NavComponent implements OnInit {
   constructor(public utilSrvc: UtilService) { }
 
   ngOnInit(): void {
+
+    //sample observable to listen for pokemons initial loading
     this.utilSrvc.navLoaded.subscribe({
-      next: value =>{
+      next: value => {
         this.loaded = value
       }
     })
