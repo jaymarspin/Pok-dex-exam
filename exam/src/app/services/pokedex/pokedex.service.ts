@@ -13,12 +13,16 @@ export class PokedexService {
 
 
   pokemons!: pokemons[]
+  pokemonsClone!: pokemons[]
+
+  offset = 0
+  length = 1000
   constructor(private http: HttpClient) { }
 
 
   public getPokemons() {
     return this.http
-      .get(`${this.server}${this.table1}?limit=100000&offset=0.`)
+      .get(`${this.server}${this.table1}?limit=${this.length}&offset=${this.offset}`)
       .pipe(map((response) => response as initPokemons));
   }
 

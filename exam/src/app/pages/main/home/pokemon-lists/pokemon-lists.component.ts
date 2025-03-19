@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { PokedexService } from 'src/app/services/pokedex/pokedex.service';
  
 
 @Component({
@@ -8,8 +9,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonListsComponent implements OnInit {
-  @Input() items: any
-  constructor() { }
+  
+  constructor(public pokedexSrvc: PokedexService) { }
   async ngOnInit(): Promise<void> {
 
   }

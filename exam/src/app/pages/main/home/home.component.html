@@ -1,9 +1,10 @@
 <form [formGroup]="searchForm" class="search-form">
-  <mat-form-field appearance="fill"  style="width: 100%;">
+  <mat-form-field appearance="fill" style="width: 100%">
     <mat-label>Search</mat-label>
-    <input matInput #search formControlName="search" />
+    <input (keyup)="keyUp($event)" matInput #search formControlName="search" />
     <mat-hint *ngIf="searchAutoFill">Autofilled!</mat-hint>
     <button
+      (click)="searching($event)"
       [disabled]="!searchForm.valid"
       mat-raised-button
       color="primary"
@@ -17,6 +18,6 @@
   </mat-form-field>
 </form>
 
-<ng-container *ngIf="items"> 
-  <app-pokemon-lists [items]="items"></app-pokemon-lists>
+<ng-container *ngIf="pokedexSrvc.pokemons">
+  <app-pokemon-lists ></app-pokemon-lists>
 </ng-container>

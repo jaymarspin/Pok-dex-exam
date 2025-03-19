@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { APP_TITLE } from './app.module';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'exam';
+  constructor(@Inject(APP_TITLE) private appTitle: any, private titleSrvc: Title,) {
+    this.titleSrvc.setTitle(`${this.appTitle.title}`);
+  }
+
 }

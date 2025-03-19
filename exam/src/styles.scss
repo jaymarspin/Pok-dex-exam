@@ -29,15 +29,15 @@ body {
   margin-top: 20px;
 
   color: #fff;
-  
-.search-btn {
+
+  .search-btn {
     position: absolute;
     right: 0px;
     top: -15px;
   }
-  
 }
 
+//handles responsiveness
 @media only screen and (max-width: 600px) {
   .wrapper {
     height: 80vh;
@@ -51,36 +51,47 @@ body {
     border-radius: 10px;
   }
 
+  .pokemon-name-wrapper {
+    height: 100%;
+    display: block;
+    width: 100%;
 
+    .pokemon-name {
+      float: left;
+      display: block;
+      position: relative;
+      font-size: 25px;
+      width: calc(100vw - 200px);
+      height: auto;
+      color: #fff;
+    }
+  }
   .search-form {
     width: 80%;
-  
+
     display: block;
     margin: auto;
     margin-top: 20px;
-  
+
     color: #fff;
-    
-  .search-btn {
+
+    .search-btn {
       position: absolute;
       right: 0px;
       top: -15px;
     }
-    
   }
-  .pokemon-avatar{
+  .pokemon-avatar {
     display: block;
     float: left;
     height: 100px;
-    clear: left; 
-     
+    clear: left;
   }
 
-  .pokemon-details{
+  .pokemon-details {
     position: relative;
-    float: left !important; 
+    float: left !important;
     top: 10px;
     left: 5px;
-
   }
 }

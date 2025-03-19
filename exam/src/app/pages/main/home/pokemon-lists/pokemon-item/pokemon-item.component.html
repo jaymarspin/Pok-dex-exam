@@ -33,8 +33,9 @@
       (detach)="isOpen = false"
     >
       <div class="pokemon-details-json-parse">
-        <!-- Component template -->
+      
         <app-json-wrapper>
+          <!-- sample custom pipe json reader -->
           {{ pokemonDetails | jsonPretty }}
         </app-json-wrapper>
       </div>

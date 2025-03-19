@@ -1,5 +1,5 @@
-import { CdkOverlayOrigin, FlexibleConnectedPositionStrategyOrigin } from '@angular/cdk/overlay';
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+
+import {Component, Input, OnInit } from '@angular/core';
 import { pokemonDetails, pokemons } from 'src/app/interfaces/pokemons.interface';
 import { PokedexService } from 'src/app/services/pokedex/pokedex.service';
 
@@ -10,12 +10,14 @@ import { PokedexService } from 'src/app/services/pokedex/pokedex.service';
 })
 export class PokemonItemComponent implements OnInit {
   @Input() pokemon!: pokemons
-
-  @ViewChild('origin') origin!: ElementRef;
+ 
   isOpen = false;
   pokemonDetails!: pokemonDetails 
   constructor(public pokedexSrvc: PokedexService,) { }
 
+
+
+  //every time the cdk scroll to this components it will get the additional detail related to the pokemon pass to this child component
   async ngOnInit(): Promise<void> {
 
     this.pokemonDetails = await this.init() 

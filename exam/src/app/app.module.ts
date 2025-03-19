@@ -19,6 +19,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { JsonPrettyPipe } from './pipes/json-pretty/json-pretty.pipe';
 import { JsonWrapperComponent } from './shared/json-wrapper/json-wrapper.component';
 import { LoggingInterceptor } from './interceptors/logging/logging.interceptor';
+export const APP_TITLE: any = {
+  title: 'Angular Examination Jaymar Daligdig', 
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +47,22 @@ import { LoggingInterceptor } from './interceptors/logging/logging.interceptor';
     ReactiveFormsModule
   ],
   providers: [PokedexService, UtilService, {
-    provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true
-  }],
+
+    //http listener
+    provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true,
+ 
+  },{
+
+    //sample injectible value for app title in the bar in the browser
+    provide: APP_TITLE, useValue: APP_TITLE 
+ 
+  }
+
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+

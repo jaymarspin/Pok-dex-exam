@@ -3,6 +3,10 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PokedexService } from 'src/app/services/pokedex/pokedex.service';
 import { UtilService } from 'src/app/services/util/util.service';
+
+import * as smartArrayFilter from 'smart-array-filter'
+import { pokemons } from 'src/app/interfaces/pokemons.interface';
+import * as _ from 'lodash'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('search', { read: ElementRef }) search: ElementRef<HTMLElement> | undefined;
   searchAutoFill: boolean | undefined;
-  
+
   searchForm!: FormGroup;
   constructor(private _autofill: AutofillMonitor, public pokedexSrvc: PokedexService, private utilSrvc: UtilService, private fb: FormBuilder) { }
 
@@ -22,7 +26,7 @@ export class HomeComponent implements OnInit {
 
     this.searchForm = this.fb.group({
       search: ['', Validators.required],
- 
+
     });
     try {
       const x = await this.init()
@@ -31,7 +35,9 @@ export class HomeComponent implements OnInit {
 
       this.pokedexSrvc.pokemons = x.results
 
-      this.items = Array.from({ length: this.pokedexSrvc.pokemons.length }).map((_, i) => this.pokedexSrvc.pokemons[i]);
+      this.pokedexSrvc.pokemons = Array.from({ length: this.pokedexSrvc.pokemons.length }).map((_, i) => this.pokedexSrvc.pokemons[i]);
+
+      this.pokedexSrvc.pokemonsClone = _.cloneDeep(this.pokedexSrvc.pokemons)
 
 
     } catch (e: any) {
@@ -39,6 +45,21 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
+
+  searching(e?: any) {
+
+    //removes the current value of pokemon array
+    this.pokedexSrvc.pokemons = undefined as unknown as pokemons[]
+
+    //crawling through the array looking for possilbe matches of keywords from search value
+    const filteredData = smartArrayFilter.filter(this.pokedexSrvc.pokemonsClone, {
+      keywords: `${this.searchForm.controls['search'].value.trim()}`,
+    });
+
+    //assigning the filtered value from search crawl
+    this.pokedexSrvc.pokemons = filteredData
+  }
 
 
   ngAfterViewInit() {
@@ -63,8 +84,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
+  //listen for keyboard event waiting for enter to be pressed then triggers the search method above 
   keyUp(e: any) {
-    console.log(e)
+
+    if (e.keyCode === 13) {
+      this.searching()
+    }
   }
 
 

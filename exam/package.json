@@ -20,7 +20,10 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "lodash": "^4.17.21",
     "rxjs": "~7.5.0",
+    "search-array": "^1.6.0",
+    "smart-array-filter": "^4.1.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -29,6 +32,7 @@
     "@angular/cli": "~13.3.11",
     "@angular/compiler-cli": "~13.3.0",
     "@types/jasmine": "~3.10.0",
+    "@types/lodash": "^4.14.112",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",

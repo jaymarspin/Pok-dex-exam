@@ -1,6 +1,6 @@
-<cdk-virtual-scroll-viewport appendOnly itemSize="10" class="wrapper">
+<cdk-virtual-scroll-viewport *ngIf="pokedexSrvc.pokemons" appendOnly [itemSize]="100" class="wrapper">
   <app-pokemon-item
-    *cdkVirtualFor="let item of items"
+    *cdkVirtualFor="let item of pokedexSrvc.pokemons"
     [pokemon]="item"
   ></app-pokemon-item>
 </cdk-virtual-scroll-viewport>
